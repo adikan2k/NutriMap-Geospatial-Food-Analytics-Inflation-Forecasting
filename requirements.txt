@@ -1,0 +1,50 @@
+# Core Data Stack
+pandas==2.2.3
+numpy==2.0.2
+openpyxl==3.1.5
+
+# PostgreSQL
+psycopg2-binary==2.9.10
+sqlalchemy==2.0.36
+
+# Workflow Orchestration
+prefect==3.0.0
+
+# Data Transformation
+dbt-core==1.8.0
+dbt-postgres==1.8.0
+
+# ML & Forecasting
+prophet==1.1.5
+scikit-learn==1.5.2
+
+# NLP & Embeddings
+sentence-transformers==3.3.1
+torch==2.5.1
+
+# Geospatial
+geopandas==1.0.1
+folium==0.18.0
+shapely==2.0.6
+
+# Visualization
+streamlit==1.40.1
+plotly==5.24.1
+altair==5.4.1
+
+# API Integration
+requests==2.32.3
+python-dotenv==1.0.1
+
+# Data Quality
+great-expectations==1.2.3
+
+# Utilities
+tqdm==4.67.1
+loguru==0.7.3
+pyyaml==6.0.2
+
+# Development
+jupyter==1.1.1
+ipython==8.29.0
+black==24.10.0
