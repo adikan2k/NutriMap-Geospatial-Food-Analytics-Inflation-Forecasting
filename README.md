@@ -188,32 +188,10 @@ NutriMap-Geospatial-Food-Analytics-Inflation-Forecasting/
 
 ---
 
-## �💼 Resume Bullets
-
-**Version 1 (Technical):**
-- Architected an end-to-end food access pipeline ingesting **48K+ real-time grocery prices** across **3,000+ U.S. counties**, revealing food desert residents afford **2.5× fewer groceries/week** — quantifying the nutrition gap for **13.6M Americans.**
-
-- Deployed Prophet vs. ARIMA food inflation forecasting across 6 CPI categories (**MAPE: 0.28%**), projecting staple food prices rising **+1.9% over 6 months** — **2× the Fed's inflation target** — with healthy food costing **136% more per unit** than processed alternatives.
-
-**Version 2 (Business-focused):**
-- Built a geospatial food access intelligence platform processing 48K+ grocery prices, uncovering that low-income households in food deserts can afford 11 items/week vs. 35 for high-access areas — a 2.5× affordability gap impacting 13.6M Americans across 345 counties.
-
-- Engineered automated inflation forecasting (Prophet/ARIMA) across 6 food categories with 0.28% MAPE, revealing 4 of 6 staple categories rising up to +1.9% over 6 months — enabling proactive budget planning for price-sensitive households.
-
----
-
-## � Links
-
-- **GitHub Repository:** [NutriMap](https://github.com/adikan2k/NutriMap-Geospatial-Food-Analytics-Inflation-Forecasting)
-- **Portfolio Writeup:** [Link to your portfolio page]
-- **LinkedIn Post:** [Link to your project announcement]
-
----
-
 ## � Contributors
 
-- **Aditya Kanbargi** — Data Engineering, dbt Modeling, Power BI Dashboard
-- **Sanjana Kadambe Muralidhar** — Data Analysis, Forecasting, Visualization
+- **Aditya Kanbargi**
+- **Sanjana Kadambe Muralidhar** 
 
 ---
 
