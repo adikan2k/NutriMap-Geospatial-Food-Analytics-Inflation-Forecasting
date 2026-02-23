@@ -81,12 +81,12 @@ Health products average $15.40/unit vs. snacks at $6.50 — making nutritious ea
 
 ```bash
 # 1. Clone repo
-git clone https://github.com/yourusername/NutriMap
-cd NutriMap
+git clone https://github.com/adikan2k/NutriMap-Geospatial-Food-Analytics-Inflation-Forecasting.git
+cd NutriMap-Geospatial-Food-Analytics-Inflation-Forecasting
 
 # 2. Set up database
 createdb nutrimap
-psql -d nutrimap -f sql/schema.sql
+psql -d nutrimap -f postgres/schema.sql
 
 # 3. Install Python deps
 pip install -r requirements.txt
@@ -94,38 +94,61 @@ pip install -r requirements.txt
 # 4. Run ETL pipeline
 python flows/ingest_food_atlas.py
 python flows/ingest_kroger_products.py
+python flows/ingest_openfoodfacts.py
+python flows/ingest_cpi.py
 python flows/forecast_cpi.py
 
 # 5. Run dbt models
 cd nutrimap && dbt run
 
 # 6. Open Power BI
-# File → Open → powerbi/NutriMap.pbix
+# File → Open → NutriMap.pbix
 # Update data source to your localhost PostgreSQL
-```
 
-Full setup guide: [docs/SETUP.md](docs/SETUP.md)
+Full setup guide: [GETTING_STARTED.md](GETTING_STARTED.md)
 
 ---
 
 ## 📁 Project Structure
 
 ```
-NutriMap/
+NutriMap-Geospatial-Food-Analytics-Inflation-Forecasting/
 ├── flows/              # Python ETL scripts (Kroger API, USDA ingestion, forecasting)
 ├── nutrimap/           # dbt project (12 models: staging + marts)
 ├── powerbi/            # Power BI dashboard + build guide
-├── sql/                # Database schema + ad-hoc queries
-└── docs/               # Architecture diagrams + setup instructions
+├── postgres/           # Database schema + ad-hoc queries
+├── data/               # Raw data downloads
+├── requirements.txt    # Python dependencies
+├── GETTING_STARTED.md # Setup instructions
+└── README.md           # This file
 ```
 
 ---
 
-## 🔗 Links
+## � Download Dashboard
+
+| Format | Size | Best For | Link |
+|--------|------|----------|------|
+| **Full Dashboard (.pbix)** | 98 MB | Complete interactive version with data | [Download (Git LFS)](https://github.com/adikan2k/NutriMap-Geospatial-Food-Analytics-Inflation-Forecasting/raw/main/NutriMap.pbix) |
+| **Template (.pbit)** | 5 MB | Reproduce with your own data | [Download](powerbi/NutriMap.pbit) |
+| **PDF (Static)** | 10 MB | Quick preview without software | [Download](powerbi/NutriMap_Dashboard.pdf) |
+
+**All formats require Power BI Desktop (free) except PDF.**
+
+---
+
+## �🔗 Links
 
 - **Live Dashboard:** [Link if you publish to Power BI Service]
 - **Portfolio Writeup:** [Link to your portfolio page]
 - **LinkedIn Post:** [Link to your project announcement]
+
+---
+
+## 👥 Contributors
+
+- **Aditya Kanbargi** — Data Engineering, dbt Modeling, Power BI Dashboard
+- **Sanjana Kadambe Muralidhar** — Data Analysis, Forecasting, Visualization
 
 ---
 
