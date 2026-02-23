@@ -197,4 +197,4 @@ NutriMap-Geospatial-Food-Analytics-Inflation-Forecasting/
 
 ## 📝 License
 
-MIT License - free for portfolio and personal use.
+CopyRights reserved
