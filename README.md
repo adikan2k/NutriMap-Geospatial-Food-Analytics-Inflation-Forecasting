@@ -46,32 +46,54 @@
 
 ---
 
-## 🎯 Key Findings
+## 📸 Dashboard Screenshots
 
-### 1. Food Deserts Are Concentrated in the South
-38% of all U.S. food desert counties are in just 3 states: Georgia, Texas, and Mississippi.
+### Page 1: Food Desert Map — Concentrated in the South
 
-### 2. Low-Income Areas Are 3× More Likely to Be Food Deserts
-Counties earning <$35K median income have a 3× higher rate of food desert status vs. high-income counties.
+![Food Desert Map](powerbi/screenshots/page1_food_desert_map.png)
 
-### 3. Food Inflation Is Accelerating for Staples
-4 of 6 food categories are forecast to rise over the next 6 months, with fruits & vegetables leading at +1.9% (2× the Fed's inflation target).
-
-### 4. Healthy Food Costs 136% More
-Health products average $15.40/unit vs. snacks at $6.50 — making nutritious eating unaffordable for low-income households.
+**Key Findings:**
+- **345 food desert counties** affecting **13.6M Americans** (11% of all U.S. counties)
+- **38% concentrated in 3 states:** Georgia (44), Texas (44), Mississippi (42)
+- **Low-income areas 3× more likely** to be food deserts — counties earning <$35K median income show the highest rates
+- Average poverty rate of **14.6%** vs. 11.5% national average
+- Median income **$58.9K** vs. $74K national median
 
 ---
 
-## 📸 Dashboard Preview
+### Page 2: Cost of Nutrition — Healthy Food Costs More
 
-### Page 1: Food Desert Map
-![Food Desert Map](powerbi/screenshots/page1_food_desert_map.png)
-
-### Page 2: Cost of Nutrition
 ![Cost of Nutrition](powerbi/screenshots/page2_cost_nutrition.png)
 
-### Page 3: Inflation Forecast
+**Key Findings:**
+- **Health products cost 136% more** per unit ($15.40 avg) than snacks ($6.50 avg)
+- **$10 buys just 0.65 health items** vs. 3.1 candy/snack items — making nutritious eating unaffordable
+- **Food desert residents afford just 11 grocery items/week** on a 10% income budget vs. 35 for high-access residents
+- Most expensive products tracked: Muscle Milk ($36.55), Ensure Shakes ($36.55), Premier Protein ($35.49) — all health/supplement category
+
+---
+
+### Page 3: Inflation Forecast — Rising Prices Ahead
+
 ![Inflation Forecast](powerbi/screenshots/page3_inflation_forecast.png)
+
+**Key Findings:**
+- **4 of 6 food categories forecast to rise** over next 6 months: Fruits & vegetables (+1.9%), Meats (+1.7%), Food at home (+1.5%), Eggs (+0.5%)
+- **ARIMA achieved 0.28% MAPE** for Food at Home — comparable to professional economic forecasts
+- **ARIMA vs. Prophet split 3-3** across categories, with auto-selection per category ensuring best accuracy
+- **CPI index tracking from 2015-2026** shows accelerating food inflation post-2020
+
+---
+
+## 🎯 Business Value
+
+| Metric | Value | Impact |
+|--------|-------|--------|
+| **Food desert population** | 13.6M Americans | Quantified scale of food access crisis |
+| **Affordability gap** | 2.5× fewer groceries/week | Revealed income-driven nutrition inequality |
+| **Forecast accuracy** | 0.28% MAPE (ARIMA) | Professional-grade inflation predictions |
+| **Health premium** | 136% more expensive | Explained why low-income families eat processed food |
+| **Coverage** | 3,000+ U.S. counties | National-scale geospatial analysis |
 
 ---
 
@@ -104,6 +126,7 @@ cd nutrimap && dbt run
 # 6. Open Power BI
 # File → Open → NutriMap.pbix
 # Update data source to your localhost PostgreSQL
+```
 
 Full setup guide: [GETTING_STARTED.md](GETTING_STARTED.md)
 
@@ -114,14 +137,42 @@ Full setup guide: [GETTING_STARTED.md](GETTING_STARTED.md)
 ```
 NutriMap-Geospatial-Food-Analytics-Inflation-Forecasting/
 ├── flows/              # Python ETL scripts (Kroger API, USDA ingestion, forecasting)
+│   ├── ingest_food_atlas.py
+│   ├── ingest_kroger_products.py
+│   ├── ingest_openfoodfacts.py
+│   ├── ingest_cpi.py
+│   ├── fetch_tier_prices.py
+│   └── forecast_cpi.py
 ├── nutrimap/           # dbt project (12 models: staging + marts)
+│   ├── models/
+│   │   ├── staging/
+│   │   └── marts/
+│   └── dbt_project.yml
 ├── powerbi/            # Power BI dashboard + build guide
-├── postgres/           # Database schema + ad-hoc queries
+│   ├── BUILD_GUIDE.md
+│   └── screenshots/
+│       ├── page1_food_desert_map.png
+│       ├── page2_cost_nutrition.png
+│       └── page3_inflation_forecast.png
+├── postgres/           # Database schema
+│   └── README.md
 ├── data/               # Raw data downloads
+├── NutriMap.pbix       # Power BI dashboard (Git LFS)
 ├── requirements.txt    # Python dependencies
-├── GETTING_STARTED.md # Setup instructions
+├── GETTING_STARTED.md  # Setup instructions
 └── README.md           # This file
 ```
+
+---
+
+## 📊 Data Sources
+
+| Source | Purpose | Records |
+|--------|---------|---------|
+| **Kroger API** | Real-time product prices & store locations | 48K price records |
+| **USDA Food Atlas** | Food desert indicators by county | 3,000+ counties |
+| **OpenFoodFacts** | Nutrition data (Nutriscore, NOVA groups) | 100K+ products |
+| **BLS CPI API** | Historical food inflation data (2015-2025) | 6 food categories |
 
 ---
 
@@ -137,15 +188,29 @@ NutriMap-Geospatial-Food-Analytics-Inflation-Forecasting/
 
 ---
 
-## �🔗 Links
+## �💼 Resume Bullets
 
-- **Live Dashboard:** [Link if you publish to Power BI Service]
+**Version 1 (Technical):**
+- Architected an end-to-end food access pipeline ingesting **48K+ real-time grocery prices** across **3,000+ U.S. counties**, revealing food desert residents afford **2.5× fewer groceries/week** — quantifying the nutrition gap for **13.6M Americans.**
+
+- Deployed Prophet vs. ARIMA food inflation forecasting across 6 CPI categories (**MAPE: 0.28%**), projecting staple food prices rising **+1.9% over 6 months** — **2× the Fed's inflation target** — with healthy food costing **136% more per unit** than processed alternatives.
+
+**Version 2 (Business-focused):**
+- Built a geospatial food access intelligence platform processing 48K+ grocery prices, uncovering that low-income households in food deserts can afford 11 items/week vs. 35 for high-access areas — a 2.5× affordability gap impacting 13.6M Americans across 345 counties.
+
+- Engineered automated inflation forecasting (Prophet/ARIMA) across 6 food categories with 0.28% MAPE, revealing 4 of 6 staple categories rising up to +1.9% over 6 months — enabling proactive budget planning for price-sensitive households.
+
+---
+
+## � Links
+
+- **GitHub Repository:** [NutriMap](https://github.com/adikan2k/NutriMap-Geospatial-Food-Analytics-Inflation-Forecasting)
 - **Portfolio Writeup:** [Link to your portfolio page]
 - **LinkedIn Post:** [Link to your project announcement]
 
 ---
 
-## 👥 Contributors
+## � Contributors
 
 - **Aditya Kanbargi** — Data Engineering, dbt Modeling, Power BI Dashboard
 - **Sanjana Kadambe Muralidhar** — Data Analysis, Forecasting, Visualization
@@ -154,4 +219,4 @@ NutriMap-Geospatial-Food-Analytics-Inflation-Forecasting/
 
 ## 📝 License
 
-MIT License - feel free to use this for learning or adapt for your own projects.
+MIT License - free for portfolio and personal use.
